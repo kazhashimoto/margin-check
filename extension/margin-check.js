@@ -4,7 +4,8 @@
   const from_extension = (typeof chrome !== 'undefined' && chrome.extension);
   if (document.body.classList.contains('margin-check')) {
     if (!from_extension) {
-      const el = document.querySelectorAll('script[src*="content.js"]');
+      const script_src = document.currentScript.src;
+      const el = document.querySelectorAll(`script[src="${script_src}"]`);
       if (el.length) {
         const last = el[el.length - 1];
         last.remove();
