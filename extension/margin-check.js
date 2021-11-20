@@ -2,7 +2,7 @@
   let options = {};
 
   const from_extension = (typeof chrome !== 'undefined' && chrome.extension);
-  if (document.body.classList.contains('_cxt-template')) {
+  if (document.body.classList.contains('margin-check')) {
     if (!from_extension) {
       const el = document.querySelectorAll('script[src*="content.js"]');
       if (el.length) {
@@ -10,7 +10,7 @@
         last.remove();
       }
     }
-    document.body.classList.toggle('_cxt-template-done');
+    document.body.classList.toggle('margin-check-done');
     return;
   }
 
@@ -21,14 +21,19 @@
         options = Object.assign({}, result.options);
         options.preset = false;
       }
-      process(options);
+      start();
     });
   } else {
-    process(options);
+    start();
   }
 
   function init_options() {
     options.preset = true;
+  }
+
+  function start() {
+    document.body.classList.add('margin-check', 'margin-check-done');
+    process(options);
   }
 
 })(function(options) {
