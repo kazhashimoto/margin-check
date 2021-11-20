@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Charcheck 詳細設定</title>
+  <link rel="stylesheet" href="options.css">
+  <link rel="stylesheet" href="charcheck.css">
+</head>
+<body>
+  <div class="container">
+    <h3 class="hd">詳細設定</h3>
+    <p class="text">これはダミーテキストです。</p>
+
+    <p><input type="checkbox" id="item1" class="item" checked>
+      <label for="item1">項目1</label></p>
+
+    <p><input type="checkbox" id="item2" class="item" checked>
+        <label for="item2">項目2</label></p>
+
+    <p><input type="color" id="color1" value="#ff0000" class="color"><label for="color1">色1</label></p>
+    
+    <p><input type="color" id="color2" value="#00ff00" class="color"><label for="color2">色1</label></p>
+
+    <div id="status" class="message"></div>
+    <div class="buttons">
+      <button type="button" id="save" class="op-button">保存</button>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
