@@ -1,5 +1,5 @@
-(function(process) {
-  const CLASSNAME = 'margin-check';
+(function(classname, init_options, process) {
+  const CLASSNAME = classname;
   let options = {};
 
   const from_extension = (typeof chrome !== 'undefined' && chrome.extension);
@@ -16,7 +16,8 @@
     return;
   }
 
-  init_options();
+  options.preset = true;
+  init_options(options);
   if (from_extension) {
     chrome.storage.sync.get('options', function(result) {
       if ('options' in result) {
@@ -29,21 +30,20 @@
     start();
   }
 
-  function init_options() {
-    options.items = {};
-    options.items.unit = true;
-    options.items.maxDigits = 5;
-    options.colors = {};
-    options.colors.borderColor = 'red';
-    options.preset = true;
-  }
-
   function start() {
     document.body.classList.add(CLASSNAME, `${CLASSNAME}-active`);
     process(options);
   }
 
-})(function(options) {
+})('margin-check',
+function(options) {
+  options.items = {};
+  options.items.unit = true;
+  options.items.maxDigits = 5;
+  options.colors = {};
+  options.colors.borderColor = 'red';
+},
+function(options) {
   const labelMap = new Map();
   const unit = options.items.unit? 'px': '';
   const max_digits = Number(options.items.maxDigits);
