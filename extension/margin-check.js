@@ -40,7 +40,6 @@
   }
 
 })(function(options) {
-  console.log('### options', options);
   const labelMap = new Map();
   const unit = options.items.unit? 'px': '';
 
@@ -58,7 +57,6 @@
     }).forEach(e => {
       const m = get_margin_values(e);
       if (m[0] !== m[1]) {
-        console.log(e, m);
         e.style.outline = '1px solid red';
         show_margin(e, m);
       }
@@ -145,7 +143,6 @@
       o.style.top = base.top + 'px';
 
       const m = get_margin_values(target);
-      console.log(m);
       const m_labels = toFixedTrim2(m[0], m[1], 3);
       let length, idx;
       if (o.classList.contains('_margin-left')) {
