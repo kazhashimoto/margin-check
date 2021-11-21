@@ -4,7 +4,6 @@ function save_options() {
     colors: {},
   };
   document.querySelectorAll('.item').forEach(e => {
-    console.dir(e);
     obj.items[e.id] = (e.type == 'checkbox')? e.checked: e.value;
   });
   document.querySelectorAll('.color').forEach(e => {
