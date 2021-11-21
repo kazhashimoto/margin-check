@@ -181,7 +181,7 @@
     if (Number.isInteger(val)) {
       return val.toString();
     }
-    return val.toFixed(max_digits).replace(/0+$/, '');
+    return val.toFixed(max_digits).replace(/0+$/, '').replace(/\.$/, '.0');
   }
 
   function toFixedTrim2(x, y, max_digits) {

@@ -8,12 +8,14 @@ body {
 .container {
   width: 90%;
   max-width: 600px;
-  width: 600px;
   margin: 30px auto 0;
 }
 .box {
   width: 200px;
   height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: lightblue;
   margin: 10px 20px;
 }
