@@ -1,5 +1,5 @@
 @charset "UTF-8";
 
-body:not(.margin-check-done) ._margin {
+body:not(.margin-check-active) ._margin {
   display: none;
 }

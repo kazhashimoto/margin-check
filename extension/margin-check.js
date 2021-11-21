@@ -11,7 +11,7 @@
         last.remove();
       }
     }
-    document.body.classList.toggle('margin-check-done');
+    document.body.classList.toggle('margin-check-active');
     return;
   }
 
@@ -29,16 +29,20 @@
   }
 
   function init_options() {
+    options.items = {};
+    options.items.unit = true;
     options.preset = true;
   }
 
   function start() {
-    document.body.classList.add('margin-check', 'margin-check-done');
+    document.body.classList.add('margin-check', 'margin-check-active');
     process(options);
   }
 
 })(function(options) {
+  console.log('### options', options);
   const labelMap = new Map();
+  const unit = options.items.unit? 'px': '';
 
   function scan_elements() {
     Array.from(document.querySelectorAll('body *'))
@@ -126,7 +130,7 @@
     p.style.position = 'absolute';
     p.style.top = '-20px';
     p.style.left = 0;
-    p.textContent = toFixedTrim(length, 3) + 'px';
+    p.textContent = toFixedTrim(length, 3) + unit;
     p.style.fontSize = '12px';
     p.style.color = 'red';
     o.appendChild(p);
@@ -169,7 +173,7 @@
       }
       set_marker_color(o, (length >= 0)? 'red': 'blue');
       const p = o.querySelector('p');
-      p.textContent = m_labels[idx] + 'px';
+      p.textContent = m_labels[idx] + unit;
       p.style.color = m_labels[2]? 'green': 'red';
     });
   }
