@@ -4,7 +4,8 @@ function save_options() {
     colors: {},
   };
   document.querySelectorAll('.item').forEach(e => {
-    obj.items[e.id] = e.checked;
+    console.dir(e);
+    obj.items[e.id] = (e.type == 'checkbox')? e.checked: e.value;
   });
   document.querySelectorAll('.color').forEach(e => {
     obj.colors[e.id] = e.value;
@@ -24,10 +25,15 @@ function restore_options() {
     if ('options' in result) {
       const options = result.options;
       document.querySelectorAll('.item').forEach(e => {
-        document.getElementById(e.id).checked = options.items[e.id];
+        const opt_value = options.items[e.id];
+        if (e.type == 'checkbox') {
+          e.checked = opt_value;
+        } else {
+          e.value = opt_value;
+        }
       });
       document.querySelectorAll('.color').forEach(e => {
-        document.getElementById(e.id).value = options.colors[e.id];
+        e.value = options.colors[e.id];
       });
     }
   });

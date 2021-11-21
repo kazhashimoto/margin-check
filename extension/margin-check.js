@@ -32,6 +32,9 @@
   function init_options() {
     options.items = {};
     options.items.unit = true;
+    options.items.maxDigits = 5;
+    options.colors = {};
+    options.colors.borderColor = 'red';
     options.preset = true;
   }
 
@@ -41,8 +44,10 @@
   }
 
 })(function(options) {
+  console.log('## options', options);
   const labelMap = new Map();
   const unit = options.items.unit? 'px': '';
+  const max_digits = Number(options.items.maxDigits);
 
   function scan_elements() {
     Array.from(document.querySelectorAll('body *'))
@@ -58,7 +63,7 @@
     }).forEach(e => {
       const m = get_margin_values(e);
       if (m[0] !== m[1]) {
-        e.style.outline = '1px solid red';
+        e.style.outline = `1px solid ${options.colors.borderColor}`;
         show_margin(e, m);
       }
     });
@@ -129,7 +134,7 @@
     p.style.position = 'absolute';
     p.style.top = '-20px';
     p.style.left = 0;
-    p.textContent = toFixedTrim(length, 3) + unit;
+    p.textContent = toFixedTrim(length, max_digits) + unit;
     p.style.fontSize = '12px';
     p.style.color = 'red';
     o.appendChild(p);
@@ -144,7 +149,7 @@
       o.style.top = base.top + 'px';
 
       const m = get_margin_values(target);
-      const m_labels = toFixedTrim2(m[0], m[1], 3);
+      const m_labels = toFixedTrim2(m[0], m[1], max_digits);
       let length, idx;
       if (o.classList.contains('_margin-left')) {
         length = m[0];

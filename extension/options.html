@@ -9,17 +9,15 @@
 <body>
   <div class="container">
     <h3 class="hd">詳細設定</h3>
-    <p class="text">これはダミーテキストです。</p>
+    <p class="text">margin値の表示書式の詳細設定</p>
 
     <p><input type="checkbox" id="unit" class="item" checked>
       <label for="unit">単位を表示する</label></p>
 
-    <p><input type="checkbox" id="item2" class="item" checked>
-        <label for="item2">項目2</label></p>
+    <p><label for="max-digits">小数点以下の最大桁数</label> <input type="number" step="1" min="1" max="5" id="maxDigits" class="item" value="5"></p>
 
-    <p><input type="color" id="color1" value="#ff0000" class="color"><label for="color1">色1</label></p>
+    <p><label for="color1">境界線の色</label> <input type="color" id="borderColor" value="#ff0000" class="color"></p>
 
-    <p><input type="color" id="color2" value="#00ff00" class="color"><label for="color2">色1</label></p>
 
     <div id="status" class="message"></div>
     <div class="buttons">
