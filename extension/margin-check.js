@@ -1,8 +1,9 @@
 (function(process) {
+  const CLASSNAME = 'margin-check';
   let options = {};
 
   const from_extension = (typeof chrome !== 'undefined' && chrome.extension);
-  if (document.body.classList.contains('margin-check')) {
+  if (document.body.classList.contains(CLASSNAME)) {
     if (!from_extension) {
       const script_src = document.currentScript.src;
       const el = document.querySelectorAll(`script[src="${script_src}"]`);
@@ -11,7 +12,7 @@
         last.remove();
       }
     }
-    document.body.classList.toggle('margin-check-active');
+    document.body.classList.toggle(`${CLASSNAME}-active`);
     return;
   }
 
@@ -35,7 +36,7 @@
   }
 
   function start() {
-    document.body.classList.add('margin-check', 'margin-check-active');
+    document.body.classList.add(CLASSNAME, `${CLASSNAME}-active`);
     process(options);
   }
 
