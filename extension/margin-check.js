@@ -44,7 +44,6 @@
   }
 
 })(function(options) {
-  console.log('## options', options);
   const labelMap = new Map();
   const unit = options.items.unit? 'px': '';
   const max_digits = Number(options.items.maxDigits);
