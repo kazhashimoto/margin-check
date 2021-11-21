@@ -63,6 +63,7 @@ function(options) {
       const m = get_margin_values(e);
       if (m[0] !== m[1]) {
         e.style.outline = `1px solid ${options.colors.borderColor}`;
+        e.style.outlineOffset = '-1px';
         show_margin(e, m);
       }
     });
