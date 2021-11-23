@@ -13,7 +13,9 @@
       }
     }
     document.body.classList.toggle(`${CLASSNAME}-active`);
-    return;
+    if (!from_extension) {
+      return;
+    }
   }
 
   options.preset = true;
@@ -31,8 +33,15 @@
   }
 
   function start() {
-    document.body.classList.add(CLASSNAME, `${CLASSNAME}-active`);
-    process(options);
+    let active = true;
+    if (document.body.classList.contains(CLASSNAME)) {
+      if (!document.body.classList.contains(`${CLASSNAME}-active`)) {
+        active = false;
+      }
+    } else {
+      document.body.classList.add(CLASSNAME, `${CLASSNAME}-active`);
+    }
+    process(options, active);
   }
 
 })('margin-check',
@@ -43,7 +52,10 @@ function(options) {
   options.colors = {};
   options.colors.borderColor = 'red';
 },
-function(options) {
+function(options, active) {
+  if (!active) {
+    return;
+  }
   const labelMap = new Map();
   const unit = options.items.unit? 'px': '';
   const max_digits = Number(options.items.maxDigits);

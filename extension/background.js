@@ -1,4 +1,8 @@
 chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.removeCSS({
+    target: { tabId: tab.id },
+    files: ['margin-check.css']
+  });
   chrome.scripting.insertCSS({
     target: { tabId: tab.id },
     files: ['margin-check.css']
